@@ -9,9 +9,10 @@ number in the array, if it does return positions of both numbers, else shift the
 loop through again starting from the new index, until the index is the end of the array, meaning
 there is no more numbers left. Its a simple soluion using combinatorics.
 
-Time Complexity: 
+Big O: 
 
-
+Time complexity => O(n)
+Space complexity => O(n)
 
 */
 function twoSum(array, target) {

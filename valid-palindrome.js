@@ -30,9 +30,9 @@ Space complexity => O(2)
 function validPalindrome(s) {
     s = s.toLowerCase(); //change to lowercase
     new_s = s.replace(/[^a-z0-9]/gi, ''); //remove non alphanumeric characters
-    reversed_s = new_s.split('').reverse().join('');
+    reversed_s = new_s.split('').reverse().join(''); //reverse the string s
 
-    if(reversed_s === new_s) {
+    if(reversed_s === new_s) { //compare string s to it's reversed
         return true
     }
     else {
@@ -44,7 +44,7 @@ function validPalindrome(s) {
 //Solution 2: Using two pointers
 function loopCheck(string_list) {
     //base case
-    if ( string_list.length === 1 ) {
+    if ( string_list.length === 1 || null ) {
         console.log(true);
         return true;
     }

@@ -30,9 +30,9 @@ Space complexity => O(2)
 function validPalindrome(s) {
     s = s.toLowerCase(); //change to lowercase
     new_s = s.replace(/[^a-z0-9]/gi, ''); //remove non alphanumeric characters
-    reversed_s = new_s.split('').reverse().join('');
+    reversed_s = new_s.split('').reverse().join(''); //reverse the string s
 
-    if(reversed_s === new_s) {
+    if(reversed_s === new_s) { //compare string s to it's reversed
         return true
     }
     else {
@@ -43,60 +43,40 @@ function validPalindrome(s) {
 
 //Solution 2: Using two pointers
 function loopCheck(string_list) {
-    let stringLength = string_list.length;
-    
     //base case
-    if (stringLength === 1) {
-        return true
+    if ( string_list.length === 1 || null ) {
+        console.log(true);
+        return true;
     }
-
-    for (let letter of string_list) {
-        //pointers
-        let i = string_list.indexOf(letter);
-        let j = string_list.length - 1;
-
+    else {
+        let i = 0
+        let j = string_list.length - 1
         if (string_list[i] === string_list[j]) {
-            string_list = string_list.slice(i+1,j);
+            string_list = string_list.slice(i+1,j)
             loopCheck(string_list)
         }
         else {
-            return false
+            console.log(false);
+            return false;
         }
-    }
+}
+
+
 }
 function validPalindrome2(s) {
     s = s.toLowerCase(); //change to lowercase
     let new_s = s.replace(/[^a-z0-9]/gi, ''); //remove non alphanumeric characters
-    new_s = new_s.split();
+    new_s = new_s.split(''); //turns string into array of characters
 
-    let stringLength = new_s.length;
-    
-    //base case
-    if (stringLength <= 1) {
-        return true
-    }
-
-    for (let letter of new_s) {
-        //pointers
-        let i = new_s.indexOf(letter);
-        let j = new_s.length - 1;
-
-        if (new_s[i] === new_s[j]) {
-            new_s = new_s.slice(i+1,j);
-            loopCheck(new_s)
-            return true
-        }
-        else {
-            return false
-        }
-    }
-
+    console.log(s)
+    loopCheck(new_s);
 }
 
 //Test Cases
 
-console.log(validPalindrome2('ebube')) //Expected output :true
-console.log(validPalindrome2('eb&ube')) //Expected output :true
-console.log(validPalindrome2('eb13131be')) //Expected output: true
-console.log(validPalindrome2('jask11kasj')) //Expected output: false
-console.log(validPalindrome2('jask!11kasj')) //Expected output: false
+validPalindrome2('ebube') //Expected output :true
+validPalindrome2('eb&ube') //Expected output :true
+validPalindrome2('eb13131be') //Expected output: true
+validPalindrome2('jask11kasj') //Expected output: false
+validPalindrome2('jask!11kasj') //Expected output: false
+validPalindrome2('A man, a plan, a canal: Panama') //Expected output: true

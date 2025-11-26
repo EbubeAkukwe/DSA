@@ -7,7 +7,10 @@ Algorithm:
 For each number in the array, start loop from current index to see if the number at the current index adds up with any other
 number in the array, if it does return positions of both numbers, else shift the current index and 
 loop through again starting from the new index, until the index is the end of the array, meaning
-there is no more numbers left. Its a simple soluion using combinatorics.
+there is no more numbers left. Its a simple soluion using two pointers, first pointer stays
+in place and compares with remaining elements in array starting from index next to it,
+if none add up to target pointer moves to next element and repeats the process until a match is found that
+adds up to target or the pointers reaches the end of the array.
 
 Big O: 
 
@@ -17,22 +20,22 @@ Space complexity => O(n)
 */
 function twoSum(array, target) {
 
-sumArray = [null];
-arrayLength = array.length;
+    sumArray = [null];
+    arrayLength = array.length;
 
-for (let num of array) {
-    let i = array.indexOf(num)
-    let j = i + 1
-    while (j <= (arrayLength-1)) {
-        if (array[i] + array[j] === target) {
-            sumArray = [i, j]
-            return sumArray
+    for (let num of array) {
+        let i = array.indexOf(num)
+        let j = i + 1
+        while (j <= (arrayLength-1)) {
+            if (array[i] + array[j] === target) {
+                sumArray = [i, j]
+                return sumArray
+            }
+            j++
         }
-        j++
     }
-}
 
-return [];
+    return [];
 }
 
 //Test Cases
@@ -41,3 +44,4 @@ console.log(twoSum([2,7,11,15], 9)) //expected output: [0, 1]
 console.log(twoSum([1,2,3,4,5], 5)) //expected output: [0, 3] or [1, 2]
 console.log(twoSum([0,3,4,5,8,1], 7)) //expected ouput: [1, 2]
 console.log(twoSum([1,2,3,4,5], 12)) //expected output: []
+console.log(twoSum([3,3], 6)) //expected output: [0, 1]
